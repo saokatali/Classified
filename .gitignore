@@ -2,3 +2,12 @@
 /src/Api/Classified/Classified/*.user
 /src/Api/Classified/Classified/bin
 /src/Api/Classified/Classified/obj
+/src/UI/Classified.UI/Classified.UI/obj
+/src/UI/Classified.UI/Classified.UI/bin
+/src/UI/Classified.UI/.vs
+/src/API/Classified/Classified.API/obj
+/src/API/Classified/Classified.API/bin
+/src/API/Classified/Classified.Common/obj
+/src/API/Classified/Classified.Common/bin
+/src/API/Classified/Classified.RealEstate/obj
+/src/API/Classified/Classified.RealEstate/bin
