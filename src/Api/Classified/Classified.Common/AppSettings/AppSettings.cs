@@ -9,6 +9,8 @@ namespace Classified.Common.AppSettings
     public class AppSettings
     {
         public JWToptions JWT { get; set; }
+
+        public SqlServerOptions SqlServer { get; set; }
     }
 
     public class JWToptions
@@ -18,5 +20,10 @@ namespace Classified.Common.AppSettings
         public bool ValidateIssuer { get; set; }
 
         public int SigningKey { get; set; }
+    }
+
+    public  class SqlServerOptions
+    {
+        public string ConnectionStrings { get; set; }
     }
 }
