@@ -14,8 +14,12 @@ namespace Classified.RealEstate.Infrastructure
 {
     public class DataContext : DbContext
     {
+        #region overides
         public AppSettings AppSettings { get; set; }
-        public DataContext(IOptionsSnapshot<AppSettings> options)
+        public DataContext()
+        {
+        }
+            public DataContext(IOptionsSnapshot<AppSettings> options)
         {
             this.AppSettings = options.Value;
         }
@@ -23,7 +27,7 @@ namespace Classified.RealEstate.Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(AppSettings.SqlServer.ConnectionStrings);
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MicroShopCatalog;Integrated Security=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -81,5 +85,12 @@ namespace Classified.RealEstate.Infrastructure
             builder.Entity<T>().HasQueryFilter(e => !e.IsDeleted);
         }
 
+        #endregion
+
+        public DbSet<Property> Properties { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+
+        public DbSet<Builder> Builders { get; set; }
     }
 }
