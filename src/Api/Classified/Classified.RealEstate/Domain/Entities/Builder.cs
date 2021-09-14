@@ -13,7 +13,7 @@ namespace Classified.RealEstate.Domain.Entities
         public string Address { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        ICollection<Project> Projects { get; set; }
+        public ICollection<Project> Projects { get; set; }
 
         public ICollection<Review> Reviews { get; set; }
 
