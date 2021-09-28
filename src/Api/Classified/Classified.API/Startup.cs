@@ -18,6 +18,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Reflection;
+using Classified.RealEstate.Application.Extensions;
 
 namespace Classified
 {
@@ -38,12 +39,12 @@ namespace Classified
             services.AddDbContext<ClassifiedDbContect>();
             services.AddIdentityCore<AppUser>().AddEntityFrameworkStores<ClassifiedDbContect>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
+            services.AddRealEstate();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
                 options.RequireHttpsMetadata = true;
                 options.SaveToken = true;
-                options.TokenValidationParameters = new TokenValidationParameters 
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateAudience=false,
                     ValidateIssuer=false,

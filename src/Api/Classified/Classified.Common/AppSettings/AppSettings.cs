@@ -19,7 +19,7 @@ namespace Classified.Common.AppSettings
 
         public bool ValidateIssuer { get; set; }
 
-        public int SigningKey { get; set; }
+        public string SigningKey { get; set; }
     }
 
     public  class SqlServerOptions

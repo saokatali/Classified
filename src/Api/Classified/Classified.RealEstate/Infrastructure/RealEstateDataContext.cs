@@ -12,14 +12,14 @@ using Microsoft.Extensions.Options;
 
 namespace Classified.RealEstate.Infrastructure
 {
-    public class DataContext : DbContext
+    public class RealEstateDataContext : DbContext
     {
         #region overides
         public AppSettings AppSettings { get; set; }
-        public DataContext()
+        public RealEstateDataContext()
         {
         }
-            public DataContext(IOptionsSnapshot<AppSettings> options)
+            public RealEstateDataContext(IOptionsSnapshot<AppSettings> options)
         {
             this.AppSettings = options.Value;
         }
@@ -27,7 +27,7 @@ namespace Classified.RealEstate.Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MicroShopCatalog;Integrated Security=true");
+            optionsBuilder.UseSqlServer(AppSettings.SqlServer.ConnectionStrings);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace Classified.RealEstate.Infrastructure
         }
 
 
-        static readonly MethodInfo SetGlobalQueryMethod = typeof(DataContext).GetMethods(BindingFlags.Public | BindingFlags.Instance)
+        static readonly MethodInfo SetGlobalQueryMethod = typeof(RealEstateDataContext).GetMethods(BindingFlags.Public | BindingFlags.Instance)
                                                         .Single(t => t.IsGenericMethod && t.Name == "SetGlobalQuery");
 
         public void SetGlobalQuery<T>(ModelBuilder builder) where T : BaseEntity
